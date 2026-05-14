@@ -1,0 +1,249 @@
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,700;0,9..144,900;1,9..144,700;1,9..144,900&family=JetBrains+Mono:wght@400;600&family=Syne:wght@400;600;700;800&display=swap');
+
+:root {
+  /* Light Palette (Repurposing variables to avoid changing all JSX) */
+  --navy-deep: #F8FAFC; 
+  --navy-base: #FFFFFF; 
+  --navy-mid: #F1F5F9; 
+  --navy-light: #E2E8F0; 
+  --text-bright: #0F172A; /* Dark text */
+  --text-dim: #475569; /* Gray text */
+  --text-faint: rgba(15, 23, 42, 0.3);
+  --border: rgba(15, 23, 42, 0.12);
+
+  /* Accents (Adjusted for Light Mode for better contrast) */
+  --cyan: #0284C7; 
+  --cyan-rgb: 2, 132, 199;
+  
+  --orange: #EA580C; 
+  --orange-rgb: 234, 88, 12;
+  
+  --violet: #7C3AED; 
+  --violet-rgb: 124, 58, 237;
+
+  /* Graph Colors */
+  --green: #16A34A;
+  --green-rgb: 22, 163, 74;
+  --red: #DC2626;
+  --red-rgb: 220, 38, 38;
+  --yellow: #CA8A04;
+  --yellow-rgb: 202, 138, 4;
+  --blue-light: #2563EB;
+  --blue-light-rgb: 37, 99, 235;
+
+  /* Spacing */
+  --sp-xs: 8px;
+  --sp-sm: 12px;
+  --sp-md: 16px;
+  --sp-lg: 24px;
+  --sp-xl: 36px;
+  --sp-xxl: 56px;
+  --sp-hero: 72px;
+  --sp-page: 5vw;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+}
+
+body {
+  background-color: var(--navy-base);
+  color: var(--text-bright);
+  font-family: 'Syne', sans-serif;
+  font-weight: 400;
+  line-height: 1.8;
+  font-size: 15px; /* Slightly larger for readability */
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Typography Scales */
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Fraunces', serif;
+  text-align: left;
+  margin: 0;
+  line-height: 1.2;
+}
+
+h1 em, h2 em, h3 em {
+  font-style: italic;
+  font-weight: inherit;
+}
+
+.type-hero {
+  font-family: 'Fraunces', serif;
+  font-size: clamp(40px, 6vw, 72px);
+  font-weight: 900;
+  letter-spacing: -1px;
+}
+
+.type-home {
+  font-family: 'Fraunces', serif;
+  font-size: clamp(48px, 8vw, 96px);
+  font-weight: 900;
+  letter-spacing: -2px;
+}
+
+.type-section {
+  font-family: 'Fraunces', serif;
+  font-size: 32px;
+  font-weight: 700;
+  color: var(--text-bright);
+}
+
+@media (min-width: 768px) {
+  .type-section {
+    font-size: 36px;
+  }
+}
+
+.type-label {
+  font-family: 'Syne', sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.type-formula {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 1.8;
+}
+
+.type-chip {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.type-nav {
+  font-family: 'Syne', sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+}
+
+/* Entry Animation */
+@keyframes FU {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.pu {
+  animation: FU 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.pu-once {
+  animation: FU 0.6s cubic-bezier(0.16, 1, 0.3, 1) both;
+  animation-iteration-count: 1;
+}
+
+/* Helpers */
+button {
+  cursor: pointer;
+  border: none;
+  background: transparent;
+  color: inherit;
+  font-family: inherit;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+  transition: opacity 0.2s;
+}
+a:hover {
+  opacity: 0.8;
+}
+
+input {
+  border-radius: 0;
+  font-family: inherit;
+}
+
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding-left: var(--sp-page);
+  padding-right: var(--sp-page);
+}
+
+@media (max-width: 1023px) {
+  .container {
+    padding-left: 36px;
+    padding-right: 36px;
+  }
+}
+
+@media (max-width: 767px) {
+  .container {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+  
+  .desktop-nav {
+    display: none !important;
+  }
+  
+  .mobile-nav-btn {
+    display: block !important;
+  }
+}
+
+
+/* Mobile Responsive Fixes */
+@media (max-width: 768px) {
+  /* Make machine flow vertical on mobile */
+  .machine-row-mobile {
+    flex-direction: column !important;
+  }
+  
+  /* Ensure SVG graphics fit mobile screens */
+  svg {
+    max-width: 100%;
+    height: auto;
+  }
+  
+  /* Reduce padding on mobile */
+  .container {
+    padding-left: 16px !important;
+    padding-right: 16px !important;
+  }
+}
+
+/* Desktop: Side-by-side layout for Circle explorer */
+@media (min-width: 769px) {
+  .circle-explorer-desktop {
+    display: grid !important;
+    grid-template-columns: minmax(300px, 340px) 1fr !important;
+  }
+  
+  .circle-viz {
+    order: 2 !important;
+  }
+  
+  .circle-controls {
+    order: 1 !important;
+    border-top: none !important;
+  }
+  
+  /* Desktop: Side-by-side for Inverse interactive section */
+  .interactive-section-desktop {
+    display: grid !important;
+    grid-template-columns: 1fr minmax(280px, 340px) !important;
+  }
+  
+  /* Desktop: Horizontal machine flow for Composition */
+  .machine-row-desktop {
+    flex-direction: row !important;
+    gap: 24px !important;
+  }
+}
