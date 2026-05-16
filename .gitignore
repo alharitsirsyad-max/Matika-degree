@@ -27,3 +27,5 @@ dist-ssr
 .firebase/
 .githubyes
 .githubyes.pup
+
+.firebaserc
